@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+._*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and package-manager state
+node_modules/
+.npm/
+.pnpm-store/
+
+# Sites local runtime
+.sites-runtime/
+
+# Logs, coverage, and temporary files
+*.log
+coverage/
+.cache/
+.tmp/
+tmp/
+
+# Editor settings
+.idea/
+.vscode/
+*.swp
+*~
