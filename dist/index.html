@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="像刷题一样学习创意编程：复刻热门视觉效果，边写边看，掌握 CSS、Canvas 与 SVG。" />
+  <meta name="theme-color" content="#08090c" />
+  <title>造境 · 创意编程练习场</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308090c'/%3E%3Cpath d='M8 21 15 8l2.5 7L24 11l-5 13-4-7z' fill='%23c7ff3d'/%3E%3C/svg%3E" />
+  <style>
+    :root{--bg:#08090c;--panel:#101116;--panel2:#15171d;--line:#282b34;--text:#f4f4ef;--muted:#9699a4;--acid:#c7ff3d;--orange:#ff7657;--cyan:#67e8f9;--purple:#8b7cff;--radius:14px;--top:58px;color-scheme:dark}
+    *{box-sizing:border-box}html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:Inter,"SF Pro Display","PingFang SC",system-ui,sans-serif;overflow:hidden}button,textarea{font:inherit}button{color:inherit}.icon{width:18px;height:18px;display:block}.muted{color:var(--muted)}
+    header{height:var(--top);display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid #202229;background:#0b0c10;position:relative;z-index:20}.brand{display:flex;align-items:center;gap:10px;font-weight:760;letter-spacing:-.02em;white-space:nowrap}.mark{width:31px;height:31px;border-radius:9px;background:var(--acid);color:#090a0c;display:grid;place-items:center;font-weight:950;transform:rotate(-4deg);box-shadow:0 0 28px #c7ff3d2b}.brand small{font-weight:520;color:#767984;margin-left:3px}.divider{width:1px;height:24px;background:var(--line)}
+    .challenge-pick{display:flex;align-items:center;gap:9px;background:transparent;border:0;padding:9px 10px;border-radius:9px;cursor:pointer;font-weight:650}.challenge-pick:hover{background:#17191f}.challenge-pick .no{color:var(--acid);font-family:ui-monospace,monospace}.top-spacer{flex:1}.nav-actions{display:flex;align-items:center;gap:7px}.tool-btn,.primary,.ghost{border:1px solid var(--line);background:#17191f;border-radius:9px;height:36px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;font-weight:650}.tool-btn{width:38px;padding:0}.tool-btn:hover,.ghost:hover{background:#20232b}.primary{background:var(--acid);border-color:var(--acid);color:#0a0b0d}.primary:hover{filter:brightness(.92)}.ghost{background:transparent}.rank-btn{border-color:#3b354d;color:#d9d2ff}
+    main{height:calc(100vh - var(--top));display:grid;grid-template-columns:minmax(360px,46%) 1fr;gap:8px;padding:8px;background:#090a0d}.pane{background:var(--panel);border:1px solid #20222a;border-radius:var(--radius);min-width:0;overflow:hidden}.left{display:flex;flex-direction:column}.tabs{height:48px;display:flex;align-items:center;gap:4px;padding:0 10px;border-bottom:1px solid var(--line);background:#121319}.tab{height:34px;border:0;background:transparent;color:var(--muted);border-radius:8px;padding:0 12px;cursor:pointer;font-weight:620}.tab:hover{color:#ddd;background:#1c1e25}.tab.active{color:var(--text);background:#252831}.left-scroll{overflow:auto;flex:1}.view{display:none}.view.active{display:block}
+    .brief{padding:22px 22px 14px}.eyebrow{display:flex;align-items:center;gap:8px;color:var(--acid);font-size:13px;font-weight:720;letter-spacing:.08em;text-transform:uppercase}.eyebrow:before{content:"";width:16px;height:2px;background:var(--acid)}h1{font-size:28px;line-height:1.15;margin:12px 0 10px;letter-spacing:-.035em}.lead{font-size:15px;line-height:1.65;color:#b7bac4;margin:0 0 16px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:12px;padding:5px 8px;border-radius:999px;background:#1d2027;color:#b9bdc8;border:1px solid #2b2f39}.chip.hot{color:#ffc1b3;background:#ff765715;border-color:#ff765735}
+    .target-wrap{padding:0 22px 18px}.target-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 9px;font-size:13px;color:#c4c7d0}.target-head span:last-child{color:#6f7280}.artboard{height:320px;border-radius:12px;overflow:hidden;border:1px solid #333743;background:#05060a;position:relative;isolation:isolate}.artboard:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#181a28 0 1px,transparent 1px);background-size:18px 18px;opacity:.28}.orb{position:absolute;width:190px;height:190px;left:calc(50% - 95px);top:calc(50% - 95px);border-radius:50%;background:radial-gradient(circle at 38% 34%,#fff 0 2%,#d8ff74 5%,#82e6ff 24%,#7057ff 48%,#24135f 68%,transparent 70%);filter:blur(.2px) saturate(1.18);box-shadow:0 0 40px #7560ff55,0 0 90px #1d99ff26;animation:breathe 4s ease-in-out infinite}.orb:after{content:"";position:absolute;inset:-15%;border:1px solid #ad9fff80;border-radius:48% 52% 43% 57%;animation:spin 9s linear infinite}.ring{position:absolute;left:50%;top:50%;width:280px;height:110px;border:2px solid #c8ff3da8;border-left-color:transparent;border-right-color:#78ecff;filter:drop-shadow(0 0 7px #bfff3d);border-radius:50%;transform:translate(-50%,-50%) rotate(-18deg);animation:tilt 5s ease-in-out infinite}.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 9px #fff}.s1{left:21%;top:24%;animation:float 3s ease-in-out infinite}.s2{right:18%;top:33%;background:var(--acid);animation:float 3.8s .4s ease-in-out infinite}.s3{left:29%;bottom:21%;background:var(--cyan);animation:float 4.3s .8s ease-in-out infinite}.art-label{position:absolute;left:16px;bottom:14px;font:11px ui-monospace,monospace;color:#ffffff72;letter-spacing:.12em}.art-label b{color:var(--acid)}
+    @keyframes spin{to{transform:rotate(360deg)}}@keyframes breathe{50%{transform:scale(1.07);filter:hue-rotate(22deg) saturate(1.35)}}@keyframes tilt{50%{transform:translate(-50%,-50%) rotate(4deg) scaleX(.88)}}@keyframes float{50%{transform:translateY(-14px);opacity:.45}}
+    .goals{padding:0 22px 24px}.goals h2,.article h2{font-size:16px;margin:4px 0 12px}.checklist{display:grid;gap:9px}.check{display:flex;gap:10px;align-items:flex-start;color:#bbbfc9;font-size:14px;line-height:1.45}.check i{width:18px;height:18px;border:1px solid #464a56;border-radius:5px;display:grid;place-items:center;font-style:normal;color:var(--acid);font-size:11px;flex:0 0 auto}.article{padding:25px}.article p,.article li{font-size:15px;line-height:1.7;color:#bbbfc8}.solution-card{padding:15px;border:1px solid var(--line);background:#15171d;border-radius:10px;margin-top:13px}.solution-card b{display:block;margin-bottom:7px}.solution-card p{margin:0;color:#989ca8}
+    .workspace{display:grid;grid-template-rows:minmax(290px,55%) minmax(220px,45%);gap:8px;min-width:0}.editor,.output{display:flex;flex-direction:column;min-height:0}.pane-head{height:48px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid var(--line);background:#121319;gap:9px}.pane-title{font-weight:700;font-size:14px}.pane-title code{color:var(--acid);margin-right:6px}.head-spacer{flex:1}.selectish{font-size:13px;color:#b2b5c0;padding:7px 9px;border:1px solid #2a2d36;border-radius:8px}.tiny{height:31px;padding:0 9px;font-size:13px}.editor-shell{position:relative;flex:1;min-height:0;background:#0e0f14}.line-nos{position:absolute;z-index:2;left:0;top:0;bottom:0;width:46px;padding:16px 11px;text-align:right;color:#4f5260;border-right:1px solid #20232b;white-space:pre;font:14px/1.58 ui-monospace,SFMono-Regular,Menlo,monospace;pointer-events:none;overflow:hidden}.code{position:absolute;inset:0;resize:none;border:0;outline:0;background:transparent;color:#d9dce6;padding:16px 18px 30px 62px;font:14px/1.58 ui-monospace,SFMono-Regular,Menlo,monospace;tab-size:2;white-space:pre;overflow:auto;caret-color:var(--acid)}.code::selection{background:#8b7cff55}.statusbar{position:absolute;bottom:0;left:46px;right:0;height:23px;padding:3px 10px;background:#0e0f14e8;color:#626674;text-align:right;font:11px ui-monospace,monospace;pointer-events:none}
+    .output .tabs{height:44px}.output-body{position:relative;flex:1;min-height:0;background:#0b0c11}.outview{display:none;height:100%}.outview.active{display:block}.preview-frame{width:100%;height:100%;border:0;background:#07080b}.knowledge{padding:18px 20px;overflow:auto}.knowledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.knowledge-card{border:1px solid var(--line);border-radius:10px;background:#15171c;padding:13px;min-height:112px}.knowledge-card .k{font:11px ui-monospace,monospace;color:var(--acid);margin-bottom:8px}.knowledge-card b{display:block;font-size:14px;margin-bottom:7px}.knowledge-card p{font-size:12px;line-height:1.55;color:#969aa6;margin:0}.console{position:absolute;left:12px;bottom:12px;background:#11131ad9;backdrop-filter:blur(8px);padding:7px 10px;border:1px solid #2d3039;border-radius:7px;color:#a7abb7;font:11px ui-monospace,monospace;pointer-events:none}.console.ok{color:var(--acid);border-color:#c7ff3d3b}
+    .modal{position:fixed;inset:0;z-index:50;background:#0009;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(7px)}.modal.open{display:flex}.dialog{width:min(560px,100%);max-height:82vh;overflow:auto;background:#12141a;border:1px solid #363945;border-radius:16px;box-shadow:0 24px 100px #000;padding:20px}.dialog-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.dialog h2{font-size:20px;margin:0}.close{border:0;background:#242730;width:32px;height:32px;border-radius:8px;cursor:pointer}.rank-row{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:10px;padding:11px 6px;border-bottom:1px solid #272a33}.avatar{width:31px;height:31px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;font-size:12px;color:#08090c;font-weight:900}.rank-row small{color:#80838f}.score{font:12px ui-monospace,monospace;color:var(--acid)}.you{background:#c7ff3d0a;border-radius:9px}.toast{position:fixed;left:50%;bottom:24px;z-index:70;transform:translate(-50%,20px);opacity:0;background:#e9ffd0;color:#152006;border:1px solid #c7ff3d;padding:11px 15px;border-radius:10px;font-size:14px;font-weight:700;transition:.25s;pointer-events:none;box-shadow:0 10px 35px #0008}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .mobile-switch{display:none}.shortcut{font-size:11px;color:#747784;border:1px solid #2c2f38;border-radius:5px;padding:2px 5px}
+    @media(max-width:850px){html,body{overflow:auto}header{position:sticky;top:0}.brand small,.challenge-pick .title,.divider,.rank-btn span,.shortcut{display:none}main{height:auto;min-height:calc(100vh - var(--top));display:block;padding:6px}.left,.workspace{display:none}.left.mobile-active{display:flex;height:calc(100vh - var(--top) - 56px)}.workspace.mobile-active{display:grid;height:calc(100vh - var(--top) - 56px);grid-template-rows:52% 48%}.mobile-switch{display:flex;position:fixed;z-index:30;bottom:10px;left:50%;transform:translateX(-50%);padding:5px;background:#20232b;border:1px solid #3a3e48;border-radius:12px;box-shadow:0 10px 35px #000}.mobile-switch button{border:0;background:transparent;border-radius:8px;padding:9px 18px;color:#a9acb6}.mobile-switch button.active{background:var(--acid);color:#0a0b0d;font-weight:700}.artboard{height:290px}.knowledge-grid{grid-template-columns:1fr}.target-wrap,.brief,.goals{padding-left:16px;padding-right:16px}.nav-actions{gap:4px}.tool-btn,.primary{padding:0 10px}.tool-btn{width:36px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="mark">造</span><span>造境 <small>Creative Code</small></span></div>
+    <div class="divider"></div>
+    <button class="challenge-pick" id="challengeBtn" aria-label="选择挑战"><span class="no">#09</span><span class="title">霓虹轨道 · Orbital Bloom</span><span class="muted">⌄</span></button>
+    <div class="top-spacer"></div>
+    <div class="nav-actions">
+      <button class="ghost rank-btn" id="rankBtn" aria-label="查看本周榜单"><span>本周榜单</span> ◫</button>
+      <button class="tool-btn" id="answerBtn" aria-label="查看参考答案" title="查看参考答案">⌘</button>
+      <button class="primary" id="runBtn" aria-label="运行代码">▶ 运行 <span class="shortcut">⌘↵</span></button>
+      <button class="tool-btn" id="submitBtn" aria-label="验收作品" title="验收作品">✓</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pane left mobile-active" id="leftPane">
+      <nav class="tabs" data-group="left">
+        <button class="tab active" data-target="challenge">目标效果</button><button class="tab" data-target="brief">题目说明</button><button class="tab" data-target="solutions">作品思路</button>
+      </nav>
+      <div class="left-scroll">
+        <div class="view active" id="challenge">
+          <div class="brief"><div class="eyebrow">本周热门复刻</div><h1>霓虹轨道</h1><p class="lead">只用 HTML 与 CSS，构造一个会呼吸的发光星体，并让轨道产生轻微的空间摆动。</p><div class="chips"><span class="chip hot">热门 8.7k</span><span class="chip">中等</span><span class="chip">CSS Animation</span><span class="chip">20 分钟</span></div></div>
+          <div class="target-wrap"><div class="target-head"><span>目标画面</span><span>循环 · 4 秒</span></div><div class="artboard" aria-label="目标视觉效果预览"><div class="orb"></div><div class="ring"></div><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><div class="art-label"><b>LIVE</b> / TARGET_09</div></div></div>
+          <div class="goals"><h2>验收目标</h2><div class="checklist"><div class="check"><i>1</i><span>画面中心存在一个圆形渐变主体</span></div><div class="check"><i>2</i><span>至少使用一个 <code>@keyframes</code> 动画</span></div><div class="check"><i>3</i><span>用阴影或滤镜制造可感知的辉光</span></div></div></div>
+        </div>
+        <div class="view article" id="brief"><h2>任务</h2><p>补全右侧代码，让画面接近目标效果。尺寸与颜色不要求像素级一致，更重要的是理解渐变、层叠与动画节奏。</p><h2>限制</h2><ul><li>不使用图片或外部库</li><li>动画应保持流畅并可循环</li><li>支持浏览器“减少动态效果”偏好是加分项</li></ul><h2>提示</h2><p>先完成静态形状，再逐层添加 <code>box-shadow</code>、伪元素和关键帧。空间感通常来自不同速度的叠加，而不是更复杂的图形。</p></div>
+        <div class="view article" id="solutions"><h2>作品思路</h2><div class="solution-card"><b>01 · 径向渐变塑形</b><p>把多个色标压缩在圆心附近，形成高光，再用透明色收尾。</p></div><div class="solution-card"><b>02 · 椭圆边框模拟轨道</b><p>旋转扁椭圆，通过透明边与不同色边制造掠过球体的错觉。</p></div><div class="solution-card"><b>03 · 错相动画</b><p>给星点设置不同 duration 与 delay，少量元素也能显得丰富。</p></div></div>
+      </div>
+    </section>
+
+    <section class="workspace" id="workspacePane">
+      <div class="pane editor">
+        <div class="pane-head"><span class="pane-title"><code>&lt;/&gt;</code>代码</span><span class="selectish">HTML + CSS</span><span class="head-spacer"></span><button class="ghost tiny" id="resetBtn">重置</button></div>
+        <div class="editor-shell"><div class="line-nos" id="lineNos">1</div><textarea class="code" id="code" spellcheck="false" aria-label="HTML 和 CSS 代码编辑器"></textarea><div class="statusbar" id="status">第 1 行，第 1 列 · 已自动保存</div></div>
+      </div>
+      <div class="pane output">
+        <nav class="tabs" data-group="output"><button class="tab active" data-target="preview">效果预览</button><button class="tab" data-target="knowledge">知识点</button><span class="head-spacer"></span><span class="muted" style="font-size:12px;padding-right:7px">沙盒运行</span></nav>
+        <div class="output-body"><div class="outview active" id="preview"><iframe class="preview-frame" id="previewFrame" sandbox="allow-scripts" title="代码运行效果"></iframe><div class="console" id="console">准备就绪 · ⌘ Enter 运行</div></div><div class="outview knowledge" id="knowledge"><div class="knowledge-grid"><div class="knowledge-card"><div class="k">01 / GRADIENT</div><b>径向渐变</b><p><code>radial-gradient()</code> 用色标位置控制光心、球体边缘与透明过渡。</p></div><div class="knowledge-card"><div class="k">02 / COMPOSITE</div><b>叠层与辉光</b><p><code>box-shadow</code> 可逗号分隔多层；外层越大、透明度应越低。</p></div><div class="knowledge-card"><div class="k">03 / MOTION</div><b>关键帧节奏</b><p>只设置 50% 状态即可自然往返；用 <code>ease-in-out</code> 避免机械感。</p></div><div class="knowledge-card"><div class="k">04 / TRANSFORM</div><b>空间错觉</b><p><code>rotate + scaleX</code> 让二维椭圆呈现轨道摆动与透视变化。</p></div><div class="knowledge-card"><div class="k">05 / PERFORMANCE</div><b>流畅动画</b><p>优先动画 transform 与 opacity，避免频繁触发布局计算。</p></div><div class="knowledge-card"><div class="k">BONUS</div><b>减少动态</b><p>使用 <code>prefers-reduced-motion</code>，尊重不适合持续运动的用户。</p></div></div></div></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-switch"><button class="active" data-pane="leftPane">题目</button><button data-pane="workspacePane">创作台</button></div>
+  <div class="modal" id="rankModal" role="dialog" aria-modal="true" aria-labelledby="rankTitle"><div class="dialog"><div class="dialog-head"><div><h2 id="rankTitle">本周创作者榜</h2><small class="muted">按完成热门复刻与作品点赞综合排名</small></div><button class="close" data-close aria-label="关闭">×</button></div><div class="rank-row"><b>01</b><span class="avatar">L</span><div><b>LoopGarden</b><br><small>12 题 · 连续 8 天</small></div><span class="score">9,840</span></div><div class="rank-row"><b>02</b><span class="avatar" style="background:linear-gradient(135deg,#ff7657,#ffd86f)">S</span><div><b>softpixel</b><br><small>11 题 · 连续 5 天</small></div><span class="score">9,120</span></div><div class="rank-row"><b>03</b><span class="avatar" style="background:linear-gradient(135deg,#c7ff3d,#67e8f9)">空</span><div><b>空白帧</b><br><small>9 题 · 连续 12 天</small></div><span class="score">8,760</span></div><div class="rank-row you"><b>27</b><span class="avatar" style="background:#2b2f38;color:#c7ff3d">我</span><div><b>你</b><br><small>完成这一题可上升 6 名</small></div><span class="score">2,430</span></div></div></div>
+  <div class="modal" id="challengeModal" role="dialog" aria-modal="true"><div class="dialog"><div class="dialog-head"><div><h2>热门效果复刻</h2><small class="muted">今天从一个小画面开始</small></div><button class="close" data-close aria-label="关闭">×</button></div><div class="solution-card"><b><span style="color:var(--acid)">#09</span> 霓虹轨道 · Orbital Bloom</b><p>CSS 渐变 / 动画 · 8.7k 人练习</p></div><div class="solution-card"><b>#08 流体文字 · Liquid Type</b><p>SVG Filter · 6.3k 人练习</p></div><div class="solution-card"><b>#07 粒子尾迹 · Particle Trail</b><p>Canvas 2D · 5.8k 人练习</p></div><div class="solution-card"><b>#06 噪声海报 · Noise Poster</b><p>CSS Blend Mode · 4.1k 人练习</p></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const starter = `<!doctype html>
+<html>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    display: grid; place-items: center;
+    overflow: hidden; background: #05060a;
+  }
+  .orb {
+    width: 160px; aspect-ratio: 1;
+    border-radius: 50%;
+    /* TODO 1: 加入 radial-gradient */
+    background: #7057ff;
+    /* TODO 2: 加入多层辉光 */
+  }
+  /* TODO 3: 创建呼吸动画 */
+</style>
+<div class="orb"></div>
+</html>`;
+    const solution = `<!doctype html>
+<html>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:grid; place-items:center; overflow:hidden; background:#05060a; }
+  .scene { position:relative; width:320px; height:240px; display:grid; place-items:center; }
+  .orb { width:160px; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 38% 34%,#fff 0 2%,#d8ff74 5%,#82e6ff 24%,#7057ff 48%,#24135f 68%,transparent 70%); box-shadow:0 0 34px #7560ff88,0 0 85px #1d99ff38; animation:breathe 4s ease-in-out infinite; }
+  .ring { position:absolute; width:250px; height:95px; border:2px solid #c7ff3d; border-left-color:transparent; border-right-color:#67e8f9; border-radius:50%; filter:drop-shadow(0 0 7px #c7ff3d); transform:rotate(-18deg); animation:tilt 5s ease-in-out infinite; }
+  @keyframes breathe { 50% { transform:scale(1.08); filter:hue-rotate(22deg); } }
+  @keyframes tilt { 50% { transform:rotate(5deg) scaleX(.9); } }
+  @media (prefers-reduced-motion: reduce) { * { animation:none !important; } }
+</style>
+<div class="scene"><div class="orb"></div><div class="ring"></div></div>
+</html>`;
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    const editor = $('#code'), frame = $('#previewFrame'), lineNos = $('#lineNos'), status = $('#status'), log = $('#console');
+    editor.value = localStorage.getItem('zaojing-code-09') || starter;
+    function updateEditor(){ const lines=editor.value.split('\n'); lineNos.textContent=lines.map((_,i)=>i+1).join('\n'); const before=editor.value.slice(0,editor.selectionStart).split('\n'); status.textContent=`第 ${before.length} 行，第 ${before.at(-1).length+1} 列 · 已自动保存`; localStorage.setItem('zaojing-code-09',editor.value); }
+    function run(){ frame.srcdoc=editor.value; log.textContent='运行成功 · 刚刚'; log.classList.add('ok'); setTimeout(()=>log.classList.remove('ok'),1600); showOutput('preview'); }
+    function showOutput(id){ $$('.output .tab').forEach(t=>t.classList.toggle('active',t.dataset.target===id)); $$('.outview').forEach(v=>v.classList.toggle('active',v.id===id)); }
+    function toast(msg){ const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200); }
+    function openModal(id){$(id).classList.add('open')} function closeModals(){$$('.modal').forEach(m=>m.classList.remove('open'))}
+    editor.addEventListener('input',updateEditor); editor.addEventListener('click',updateEditor); editor.addEventListener('keyup',updateEditor); editor.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();const a=editor.selectionStart,b=editor.selectionEnd;editor.setRangeText('  ',a,b,'end');updateEditor()}if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();run()}});
+    $('#runBtn').onclick=run; $('#resetBtn').onclick=()=>{editor.value=starter;updateEditor();run();toast('已恢复初始代码')};
+    $('#answerBtn').onclick=()=>{editor.value=solution;updateEditor();run();toast('参考实现已载入，可继续修改')};
+    $('#submitBtn').onclick=()=>{const c=editor.value;const passed=/radial-gradient/i.test(c)&&/@keyframes/i.test(c)&&/(box-shadow|filter)/i.test(c);if(passed){toast('验收通过！+120 灵感值');localStorage.setItem('zaojing-complete-09','1')}else{toast('还差一点：检查渐变、动画与辉光')}};
+    $('#rankBtn').onclick=()=>openModal('#rankModal'); $('#challengeBtn').onclick=()=>openModal('#challengeModal'); $$('[data-close]').forEach(b=>b.onclick=closeModals); $$('.modal').forEach(m=>m.onclick=e=>{if(e.target===m)closeModals()}); document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModals()});
+    $$('.tabs').forEach(nav=>nav.addEventListener('click',e=>{const t=e.target.closest('.tab');if(!t)return;const group=nav.dataset.group;if(group==='output'){showOutput(t.dataset.target)}else{nav.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));$$('.left .view').forEach(v=>v.classList.toggle('active',v.id===t.dataset.target))}}));
+    $$('.mobile-switch button').forEach(b=>b.onclick=()=>{$$('.mobile-switch button').forEach(x=>x.classList.toggle('active',x===b));$('#leftPane').classList.toggle('mobile-active',b.dataset.pane==='leftPane');$('#workspacePane').classList.toggle('mobile-active',b.dataset.pane==='workspacePane')});
+    updateEditor();run();
+  </script>
+</body>
+</html>
